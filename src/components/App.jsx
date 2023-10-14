@@ -4,7 +4,7 @@ import { Loader } from './Loader/Loader';
 import { Searchbar } from './Searchbar/Searchbar';
 import { Button } from './Button/Button';
 import { fetchImages } from 'api/ImageApi';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 export class App extends Component {
   state = {
@@ -32,7 +32,7 @@ export class App extends Component {
           totalHits: page === 1 ? totalHits - hits.length : totalHits - [...prevState.images, ...hits].length,
         }));
       } catch (error) {
-        toast.error(`Something went wrong with ${error}`);
+        toast.error(`Something went wrong with ${error.message}`);
       } finally {
         this.setState({ isLoading: false });
       }
